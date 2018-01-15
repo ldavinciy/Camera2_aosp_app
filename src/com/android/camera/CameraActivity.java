@@ -1764,7 +1764,7 @@ public class CameraActivity extends QuickActivity
         }
     }
 
-    private void setRotationAnimation() {
+    protected void setRotationAnimation() {
         int rotationAnimation = WindowManager.LayoutParams.ROTATION_ANIMATION_ROTATE;
         rotationAnimation = WindowManager.LayoutParams.ROTATION_ANIMATION_CROSSFADE;
         Window win = getWindow();
@@ -1908,10 +1908,14 @@ public class CameraActivity extends QuickActivity
         if ((checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 !mSettingsManager.getBoolean(SettingsManager.SCOPE_GLOBAL, Keys.KEY_HAS_SEEN_PERMISSIONS_DIALOGS)) ||
                 !mHasCriticalPermissions) {
-            Intent intent = new Intent(this, PermissionsActivity.class);
-            startActivity(intent);
-            finish();
+            startPermissionsActivity();
         }
+    }
+
+    protected void startPermissionsActivity() {
+        Intent intent = new Intent(this, PermissionsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void preloadFilmstripItems() {
