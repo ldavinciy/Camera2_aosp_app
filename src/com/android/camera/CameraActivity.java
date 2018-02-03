@@ -3000,7 +3000,7 @@ public class CameraActivity extends QuickActivity
         filmstripBottomPanel.setViewerButtonVisibility(viewButtonVisibility);
     }
 
-    private void showDetailsDialog(int index) {
+    protected void showDetailsDialog(int index) {
         final FilmstripItem data = mDataAdapter.getItemAt(index);
         if (data == null) {
             return;
